@@ -1,10 +1,11 @@
 from django.shortcuts import render
 # from django.http import HttpResponse
+from . import models
 
 def home(request):
+  leads = models.Lead.objects.all()
   context = {
-    "name": "Hakimkhon",
-    "surname": "Sharifxonov"
+    "leads": leads
   }
   return render(request, "main.html", context)
     
