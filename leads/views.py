@@ -2,12 +2,12 @@ from django.shortcuts import render
 # from django.http import HttpResponse
 from . import models
 
-def home(request):
+def leads_list(request):
   leads = models.Lead.objects.all()
-  agents = models.Agent.objects.all()
+  # agents = models.Agent.objects.all()
   context = {
     "leads": leads,
-    "agents": agents
+    # "agents": agents
   }
-  return render(request, "main.html", context)
+  return render(request, "leads_list.html", context)
     
