@@ -4,8 +4,10 @@ from . import models
 
 def home(request):
   leads = models.Lead.objects.all()
+  agents = models.Agent.objects.all()
   context = {
-    "leads": leads
+    "leads": leads,
+    "agents": agents
   }
   return render(request, "main.html", context)
     
