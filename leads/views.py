@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from . import models
 
 def leads_list(request):
@@ -11,3 +11,8 @@ def leads_list(request):
   }
   return render(request, "leads_list.html", context)
     
+def leads_detail(request, pk):
+  # print(pk)
+  lead = get_object_or_404(models.Lead, id=pk)
+  # print(lead)
+  return render(request, 'details.html')
