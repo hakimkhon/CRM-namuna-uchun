@@ -1,8 +1,9 @@
 *{
   margin: 0;
   padding: 0;
+  background: rgb(193, 207, 160);
 }
-div{
+div {
   padding-top: 15px 8px 20px;
   border: 1px solid black;
   background-color: #f6f6f6;
@@ -12,6 +13,7 @@ div{
   color: blue;
 }
 h1{
-  color: aqua;
-  font-size: 100px;
+  color: rgb(255, 208, 0);
+  font-size: 50px;
 }
+
