@@ -28,14 +28,22 @@
       color: rgb(17, 36, 206);
       font-size: 50px;
     }
+    h3 {
+      text-align: center;
+      color: rgb(14, 41, 4);
+    }
   </style>
   <title>SUSYS</title>
 </head>
 
 <body>
   <h1>SUSYS CRM</h1>
+  <h3><a href="/leads/create/">Mijoz qo'shish</a></h3>
   {% for lead in leads %}
-  <div class="mijoz"> {{ lead.fristName }}, {{ lead.lastName }}, {{ lead.age }} </div>
+  <div class="mijoz">
+    <a href="/leads/{{ lead.pk }}/ ">{{ lead.fristName }}, {{ lead.lastName }}</a>
+    {{ lead.age }}
+  </div>
   {% endfor %}
 </body>
 
