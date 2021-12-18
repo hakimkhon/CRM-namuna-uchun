@@ -10,5 +10,12 @@
 <body>
   <a href="/leads">Asosiy sahifa</a>
   <h1>Mijoz qo'shish</h1>
+  <form method="post">
+    <p>
+      {% csrf_token %}
+      {{ forms.as_p }}
+    </p>
+    <button type="submit">Jo'natish</button>
+  </form>
 </body>
 </html>
