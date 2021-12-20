@@ -28,6 +28,14 @@ def create(request):
       fristName = form.cleaned_data['fristName']
       lastName = form.cleaned_data['lastName']
       age = form.cleaned_data['age']
+      agent = models.Agent.objects.first()
+      models.Lead.objects.create(
+        fristName = fristName,
+        lastName = lastName,
+        age = age,
+        agent = agent
+      )
+      print ("OK")
   context = {
     'forms': forms
   }
