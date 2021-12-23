@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from . import models
 from .forms import * 
@@ -23,7 +23,6 @@ def create(request):
     # print('malumot qabul qilindi')
     form = LeadForm(request.POST)
     if form.is_valid():
-      print("Tekshiryapti")
       print(form.cleaned_data)
       fristName = form.cleaned_data['fristName']
       lastName = form.cleaned_data['lastName']
@@ -35,7 +34,7 @@ def create(request):
         age = age,
         agent = agent
       )
-      print ("OK")
+      return redirect("/leads")
   context = {
     'forms': forms
   }
