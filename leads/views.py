@@ -18,24 +18,25 @@ def leads_detail(request, pk):
   return render(request, 'details.html', context)
 
 def create(request):
-  forms = LeadForm()
+  form = LeadModelForm()
   if request.method == "POST":
     # print('malumot qabul qilindi')
-    form = LeadForm(request.POST)
+    form = LeadModelForm(request.POST)
     if form.is_valid():
-      print(form.cleaned_data)
-      fristName = form.cleaned_data['fristName']
-      lastName = form.cleaned_data['lastName']
-      age = form.cleaned_data['age']
-      agent = models.Agent.objects.first()
-      models.Lead.objects.create(
-        fristName = fristName,
-        lastName = lastName,
-        age = age,
-        agent = agent
-      )
+      form.save()
+      # print(form.cleaned_data)
+      # fristName = form.cleaned_data['fristName']
+      # lastName = form.cleaned_data['lastName']
+      # age = form.cleaned_data['age']
+      # agent = models.Agent.objects.first()
+      # models.Lead.objects.create(
+      #   fristName = fristName,
+      #   lastName = lastName,
+      #   age = age,
+      #   agent = agent
+      # )
       return redirect("/leads")
   context = {
-    'forms': forms
+    'forms': form
   }
   return render(request, 'create.html', context)
