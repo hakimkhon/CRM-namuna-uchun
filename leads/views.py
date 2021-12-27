@@ -32,7 +32,26 @@ def create(request):
 
 def lead_update(request, pk):
   lead = Lead.objects.get(id = pk)
+  form = LeadModelForm(instance=lead)
+  if request.method == "POST":
+    # print('malumot qabul qilindi')
+    form = LeadModelForm(request.POST, instance=lead)
+    if form.is_valid():
+      form.save()
+      return redirect("/leads")
+  # if request.method == "POST":
+  #   form = LeadForm(request.POST)
+  #   if form.is_valid():
+  #     fristName = form.cleaned_data["fristName"]
+  #     lastName = form.cleaned_data["lastName"]
+  #     age = form.cleaned_data["age"]
+  #     lead.fristName = fristName
+  #     lead.lastName = lastName
+  #     lead.age = age
+  #     lead.save()
+  #     return redirect("/leads")
   context = {
+    'form': form,
     'lead': lead
   }
   return render(request, 'update.html', context)
