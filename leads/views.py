@@ -20,7 +20,6 @@ def leads_detail(request, pk):
 def create(request):
   form = LeadModelForm()
   if request.method == "POST":
-    # print('malumot qabul qilindi')
     form = LeadModelForm(request.POST)
     if form.is_valid():
       form.save()
@@ -34,11 +33,22 @@ def lead_update(request, pk):
   lead = Lead.objects.get(id = pk)
   form = LeadModelForm(instance=lead)
   if request.method == "POST":
-    # print('malumot qabul qilindi')
     form = LeadModelForm(request.POST, instance=lead)
     if form.is_valid():
       form.save()
       return redirect("/leads")
+  context = {
+    'form': form,
+    'lead': lead
+  }
+  return render(request, 'update.html', context)
+
+def leadDelete(request, pk):
+  lead = Lead.objects.get(id = pk)
+  lead.delete()
+  return redirect("/leads")
+
+
   # if request.method == "POST":
   #   form = LeadForm(request.POST)
   #   if form.is_valid():
@@ -50,8 +60,3 @@ def lead_update(request, pk):
   #     lead.age = age
   #     lead.save()
   #     return redirect("/leads")
-  context = {
-    'form': form,
-    'lead': lead
-  }
-  return render(request, 'update.html', context)

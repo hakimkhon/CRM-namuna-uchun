@@ -20,10 +20,17 @@ h1 {
   color: rgb(17, 36, 206);
   font-size: 30px;
 }
+a {
+  font-size: 20px;
+  margin: 8px;
+  text-align: center;
+  color: rgb(1, 2, 37);
+  background: none;
+}
 h3 {
   text-align: center;
   color: rgb(14, 41, 4);
 }
-label, input {
+label, input, select, button {
   font-size: 30px;
 }
