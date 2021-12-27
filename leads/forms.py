@@ -9,6 +9,7 @@ class LeadModelForm(forms.ModelForm):
       "fristName",
       "lastName",
       "age",
+      # "email",
       "agent"
     )
 

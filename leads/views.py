@@ -24,19 +24,15 @@ def create(request):
     form = LeadModelForm(request.POST)
     if form.is_valid():
       form.save()
-      # print(form.cleaned_data)
-      # fristName = form.cleaned_data['fristName']
-      # lastName = form.cleaned_data['lastName']
-      # age = form.cleaned_data['age']
-      # agent = models.Agent.objects.first()
-      # models.Lead.objects.create(
-      #   fristName = fristName,
-      #   lastName = lastName,
-      #   age = age,
-      #   agent = agent
-      # )
       return redirect("/leads")
   context = {
     'forms': form
   }
   return render(request, 'create.html', context)
+
+def lead_update(request, pk):
+  lead = Lead.objects.get(id = pk)
+  context = {
+    'lead': lead
+  }
+  return render(request, 'update.html', context)
