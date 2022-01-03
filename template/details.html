@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/css/main.css">
-  <title>Mijoz malumotlari</title>
-</head>
-<body>
+{% extends 'main.html' %}
+{% block title %}
+  Mijozlar
+{% endblock %}
+{% block content %}
   <a href="/leads">Asosiy sahifa</a>
   <h1>Mijoz haqida malumot</h1>
   <h2> Ismi: {{lead.fristName}} </h2>
@@ -20,10 +15,4 @@
     <a href="/leads/{{ lead.pk }}/delete">O'chirish</a>
   </button>
 
-
-  <p>
-    Hakimxon senga omad! faqat oldinga!!!
-  </p>
-
-</body>
-</html>
+{% endblock %}

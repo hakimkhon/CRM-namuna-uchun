@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'main.html' %}
+  {% block title %}
+    Asosiy sahifa
+  {% endblock %}
+{% block content %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/css/main.css">
-  <title>SUSYS</title>
-</head>
-
-<body>
-  <h1>SUSYS CRM</h1>
-  <h3><a href="/leads/create/">Mijoz qo'shish</a></h3>
+  <h3><a href="{% url 'leads:lead-create'%}">Mijoz qo'shish</a></h3>
   {% for lead in leads %}
   <div class="mijoz">
     <a href="/leads/{{ lead.pk }}/ ">{{ lead.fristName }}, {{ lead.lastName }}</a>
     {{ lead.age }}
   </div>
   {% endfor %}
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore labore maxime non unde eveniet soluta quam saepe.
-    Amet, inventore obcaecati.
-  </p>
-</body>
 
-</html>
+{% endblock %}

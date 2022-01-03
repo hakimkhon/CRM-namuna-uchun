@@ -8,5 +8,5 @@ urlpatterns = [
     path('<int:pk>/', leads_detail),
     path('<int:pk>/update', lead_update),
     path('<int:pk>/delete', leadDelete),
-    path('create/', create)
+    path('mijoz&*90laf90lar/', create, name = "lead-create")
 ]
