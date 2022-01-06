@@ -1,33 +1,53 @@
-from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, reverse
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from . import models
 from .forms import * 
 
-def leads_list(request):
-  leads = models.Lead.objects.all()
-  context = {
-    "leads": leads,
-  }
-  return render(request, "leads_list.html", context)
-    
-def leads_detail(request, pk):
-  lead = get_object_or_404(models.Lead, id=pk)
-  context = {
-    "lead": lead
-  }
-  return render(request, 'details.html', context)
+class HomeView(TemplateView):
+  template_name = "home.html"
 
-def create(request):
-  form = LeadModelForm()
-  if request.method == "POST":
-    form = LeadModelForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return redirect("/leads")
-  context = {
-    'forms': form
-  }
-  return render(request, 'create.html', context)
+class ListsView(ListView):
+  template_name = "leads_list.html"
+  queryset = models.Lead.objects.all() 
+  context_object_name = "leads"
+
+class LeadDetailView(DetailView):
+  template_name = "details.html"
+  queryset = models.Lead.objects.all() 
+  context_object_name = "lead"
+
+# def leads_list(request):
+#   leads = models.Lead.objects.all()
+#   context = {
+#     "leads": leads,
+#   }
+#   return render(request, "leads_list.html", context)
+    
+# def leads_detail(request, pk):
+#   lead = get_object_or_404(models.Lead, id=pk)
+#   context = {
+#     "lead": lead
+#   }
+#   return render(request, 'details.html', context)
+class LeadCreateView(CreateView):
+  template_name = "create.html"
+  form_class = LeadModelForm
+
+  def get_success_url(self):
+    return reverse('leads:listlar')
+
+
+# def create(request):
+#   form = LeadModelForm()
+#   if request.method == "POST":
+#     form = LeadModelForm(request.POST)
+#     if form.is_valid():
+#       form.save()
+#       return redirect("/leads")
+#   context = {
+#     'forms': form
+#   }
+#   return render(request, 'create.html', context)
 
 def lead_update(request, pk):
   lead = Lead.objects.get(id = pk)
