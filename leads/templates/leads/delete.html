@@ -1,16 +1,18 @@
 {% extends 'main.html' %}
 {% block title %}
-  Mijoz qo'shish
+  O'chirish
 {% endblock %}
 {% block content %}
-  <!-- <a href="/leads">Asosiy sahifa</a> -->
-  <h1>Mijoz qo'shish</h1>
+  <a href="/leads">Mijozlar bo'limi</a>
+  <br>
+  <h1>Formana o'chirishga rozimisiz</h1>
+  <!-- <h1>Mijoz qo'shish</h1> -->
   <form method="post">
     <p>
       {% csrf_token %}
       {{ form.as_p }}
     </p>
-    <button type="submit">Jo'natish</button>
+    <button type="submit">O'chirish</button>
   </form>
 
 {% endblock %}

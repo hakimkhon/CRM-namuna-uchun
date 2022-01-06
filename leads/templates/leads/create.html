@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block title %}
+  Mijoz qo'shish
+{% endblock %}
+{% block content %}
+  <a href="/leads">Asosiy sahifa</a>
+  <br>
+  <h1>Mijoz qo'shish</h1>
+  <form method="post">
+    <p>
+      {% csrf_token %}
+      {{ form.as_p }}
+    </p>
+    <button type="submit">Jo'natish</button>
+  </form>
+
+{% endblock %}
