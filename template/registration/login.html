@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block title %}
+  SUSRM login
+{% endblock %}
+{% block content %}
+  <br>
+  <form method="post">
+    <p>
+      {% csrf_token %}
+      {{ form.as_p }}
+    </p>
+    <button type="submit">Login</button>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block title %}
+  SUSRM Signuup
+{% endblock %}
+{% block content %}
+  <br>
+  <form method="post">
+    <p>
+      {% csrf_token %}
+      {{ form.as_p }}
+    </p>
+    <button type="submit">Ro'yhatdan o'tish</button>
+  </form>
+
+{% endblock %}
