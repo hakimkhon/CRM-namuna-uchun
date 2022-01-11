@@ -8,6 +8,7 @@ urlpatterns = [
     path('', HomeView.as_view()),
     path('leads/', include('leads.urls', namespace="leads")),
     path('agents/', include('agents.urls', namespace="agent")),
+    path('users/', include('users.urls', namespace="user")),
     path('login/', LoginView.as_view(), name='login'),
     path('signup/', SigupView.as_view(), name='signup'),
     path('logout/', LogoutView.as_view(), name='logout')

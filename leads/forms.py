@@ -23,7 +23,7 @@ class LeadForm(forms.Form):
   # email = forms.EmailField(max_length=50)
 
 class NewUserForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ("username",)
-        field_classes = {'username': UsernameField}
+  class Meta:
+    model = User
+    fields = ("username",)
+    field_classes = {'username': UsernameField}

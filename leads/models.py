@@ -26,6 +26,12 @@ class Agent(models.Model):
   def __str__(self):
     return str(self.user)
 
+class Userlar(models.Model):
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  profil = models.ForeignKey(UserProfil, on_delete=models.CASCADE)
+  def __str__(self):
+    return str(self.user)
+
 def post_user_yaratish(sender, instance, created, **kwargs):
   if created:
     UserProfil.objects.create(user = instance)
